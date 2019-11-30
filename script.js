@@ -19,7 +19,6 @@ function displayResults(responseJson) {
   }
   else {
     for (let i = 0; i < responseJson.animals.length; i++) {
-      console.log(i);
       $('#results-list').append(`
  <li> <h3>${responseJson.animals[i].name}</h3>
  <p>Breed: ${responseJson.animals[i].breeds.primary}</p>
@@ -54,7 +53,7 @@ function getAnimal(location, type) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      $('#js-error-message').text(`Not a valid animal type. Please try again`);
     });
 }
 
