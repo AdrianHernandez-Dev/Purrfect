@@ -3,7 +3,7 @@ const secret = 'IZAG2o6QDVal1fONI6IXbGqWoAtu6mR69amQZTi6';
 let access_token = ' ';
 const searchURL = 'https://api.petfinder.com/v2/animals/';
 const accessURL = 'https://api.petfinder.com/v2/oauth2/token'
-let expires = ' '
+let expires = ' ';
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -43,7 +43,7 @@ function getAnimal(location, type) {
   console.log(url);
   fetch(url, {
     headers: {
-      'Authorization': 'Bearer ' +  access_token
+      'Authorization': 'Bearer ' + access_token
     },
   })
     .then(response => {
@@ -71,35 +71,34 @@ function watchForm() {
   })
 }
 
-let auth = function (){
+let auth = function () {
   fetch(`https://api.petfinder.com/v2/oauth2/token`, {
-  method: 'POST',
-  body: `grant_type=client_credentials&client_id=${apiKey}&client_secret=${secret}`,
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-})
-.then(res => res.json())
-.then(function (json){
-  console.log(json);
-  access_token = json.access_token;
-  console.log(access_token);
-  //so i have the token here and I fell like i need to push this to the global variable.
-  expires = json.expires_in;
-  console.log(expires);
-});
+    method: 'POST',
+    body: `grant_type=client_credentials&client_id=${apiKey}&client_secret=${secret}`,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+  })
+    .then(res => res.json())
+    .then(function (json) {
+      console.log(json);
+      access_token = json.access_token;
+      console.log(access_token);
+      expires = json.expires_in;
+      console.log(expires);
+    });
 }
 
-function checkToken(){
-  if(expires < 0){
+function checkToken() {
+  if (expires < 0) {
     auth();
   }
   else {
     watchForm();
   }
-  }
+}
 
-function handleSearch(){
+function handleSearch() {
   auth();
   checkToken();
 }
