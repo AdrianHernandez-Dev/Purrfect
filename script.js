@@ -2,8 +2,11 @@ const apiKey = '3tCrdhVBZWYZTN8bfLl3cPJZ2Yd3oof66eukRWo36yrktz7QiF';
 const secret = 'IZAG2o6QDVal1fONI6IXbGqWoAtu6mR69amQZTi6';
 let access_token = ' ';
 const searchURL = 'https://api.petfinder.com/v2/animals/';
-const accessURL = 'https://api.petfinder.com/v2/oauth2/token'
+const accessURL = 'https://api.petfinder.com/v2/oauth2/token';
 let expires = ' ';
+let breed = ' ';
+wikiURL = 'http://en.wikipedia.org/w/api.php/';
+
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -12,7 +15,7 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
+  //console.log(responseJson);
   $('#results-list').empty();
   if (responseJson.animals.length === 0) {
     $('#results-list').append(`<h2>No results found! Please try again</h2>`);
@@ -31,10 +34,34 @@ function displayResults(responseJson) {
   }
 }
 
-function getAnimal(location, type) {
+function getWiki(breed) {
+  const params = {
+    action:'opensearch',
+    format:'json',
+    search: breed
+  };
+  console.log(params);
+  const queryString = formatQueryParams(params)
+  const url = wikiURL + '?' + queryString;
+  console.log(url);
+  fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displayResults(responseJson))
+    .catch(err => {
+      $('#js-error-message').text(`Not a valid animal type. Please try again`);
+    });
+}
+
+function getAnimal(location, type, breed) {
   const params = {
     location: location,
-    type: type
+    type: type,
+    breed: breed
   };
   console.log(params);
   const queryString = formatQueryParams(params)
@@ -65,8 +92,10 @@ function watchForm() {
     console.log(location);
     const type = $('#js-search-type').val();
     console.log(type);
+    const breed = $('#js-search-breed').val();
     //getAccess();
-    getAnimal(location, type);
+    getAnimal(location, type, breed);
+    getWiki(breed,'jsonp');
   })
 }
 
