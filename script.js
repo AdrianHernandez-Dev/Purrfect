@@ -34,6 +34,10 @@ function displayResults(responseJson) {
   }
 }
 
+function displayWiki(){
+console.log(responseJsonWiki);
+}
+
 function getWiki(breed) {
   const params = {
     action:'opensearch',
@@ -53,7 +57,7 @@ function getWiki(breed) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(responseJson))
+    .then(responseJsonWiki =>displayWiki(responseJsonWiki))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
