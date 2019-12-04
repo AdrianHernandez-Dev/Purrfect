@@ -34,7 +34,7 @@ function displayResults(responseJson) {
   }
 }
 
-function displayWiki(){
+function displayWiki(responseJsonWiki){
 console.log(responseJsonWiki);
 }
 
