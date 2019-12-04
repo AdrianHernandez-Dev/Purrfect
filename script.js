@@ -5,7 +5,8 @@ const searchURL = 'https://api.petfinder.com/v2/animals/';
 const accessURL = 'https://api.petfinder.com/v2/oauth2/token';
 let expires = ' ';
 let breed = ' ';
-wikiURL = 'https://en.wikipedia.org/w/api.php/';
+let wikiURL = 'https://en.wikipedia.org/w/api.php/';
+var queryURL = "https://cors-anywhere.herokuapp.com/";
 
 
 function formatQueryParams(params) {
@@ -46,9 +47,13 @@ function getWiki(breed) {
   };
   console.log(params);
   const queryString = formatQueryParams(params)
-  const url = wikiURL + '?' + queryString;
+  const url = queryURL + wikiURL + '?' + queryString;
   console.log(url);
-  fetch(url)
+  fetch(url, {
+    headers: {
+      "x-requested-with": "xhr" 
+    },
+  })
     .then(response => {
       if (response.ok) {
         return response.json();
