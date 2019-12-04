@@ -5,7 +5,7 @@ const searchURL = 'https://api.petfinder.com/v2/animals/';
 const accessURL = 'https://api.petfinder.com/v2/oauth2/token';
 let expires = ' ';
 let breed = ' ';
-wikiURL = 'http://en.wikipedia.org/w/api.php/';
+wikiURL = 'https://en.wikipedia.org/w/api.php/';
 
 
 function formatQueryParams(params) {
@@ -15,7 +15,7 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  //console.log(responseJson);
+  console.log(responseJson);
   $('#results-list').empty();
   if (responseJson.animals.length === 0) {
     $('#results-list').append(`<h2>No results found! Please try again</h2>`);
@@ -24,12 +24,12 @@ function displayResults(responseJson) {
     for (let i = 0; i < responseJson.animals.length; i++) {
       $('#results-list').append(`
  <li> <h3>${responseJson.animals[i].name}</h3>
- <p>Breed: ${responseJson.animals[i].breeds.primary}</p>
+ <p>Breed: ${responseJson.animals[i].breeds.primary}, ${responseJson.animals[i].breeds.secondary}</p>
  <p>Age: ${responseJson.animals[i].age}</p>
  <p>Location: ${responseJson.animals[i].contact.address.city}</p>
  <p>Status: ${responseJson.animals[i].status}</p>
  <p>Email: ${responseJson.animals[i].contact.email}</p>
- <a href="${responseJson.animals[i].url}">Find out more</a>`)
+ <a href="${responseJson.animals[i].url} target='_blank'>Find out more</a>`)
     };
   }
 }
@@ -44,16 +44,18 @@ function getWiki(breed) {
   const queryString = formatQueryParams(params)
   const url = wikiURL + '?' + queryString;
   console.log(url);
-  fetch(url)
+  fetch(url,  { 
+  mode: "no-cors"  
+  })
     .then(response => {
       if (response.ok) {
         return response.json();
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayResults(responseJson))
+    .then(responseJson => console.log(responseJson))
     .catch(err => {
-      $('#js-error-message').text(`Not a valid animal type. Please try again`);
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
 
@@ -80,7 +82,7 @@ function getAnimal(location, type, breed) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $('#js-error-message').text(`Not a valid animal type. Please try again`);
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
 
@@ -93,9 +95,8 @@ function watchForm() {
     const type = $('#js-search-type').val();
     console.log(type);
     const breed = $('#js-search-breed').val();
-    //getAccess();
     getAnimal(location, type, breed);
-    getWiki(breed,'jsonp');
+    getWiki(breed);
   })
 }
 
