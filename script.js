@@ -48,9 +48,7 @@ function getWiki(breed) {
   const queryString = formatQueryParams(params)
   const url = wikiURL + '?' + queryString;
   console.log(url);
-  fetch(url,  { 
-  mode: "no-cors"  
-  })
+  fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
