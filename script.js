@@ -23,13 +23,18 @@ function displayResults(responseJson) {
   }
   else {
     for (let i = 0; i < responseJson.animals.length; i++) {
+      let secondaryBreed = '';
+      if (responseJson.animals[i].breeds.secondary){
+        secondaryBreed = ', ' + responseJson.animals[i].breeds.secondary;
+      }
+      let contact = responseJson.animals[i].contact.email || '';
       $('#results-list').append(`
  <li> <h3>${responseJson.animals[i].name}</h3>
- <p>Breed: ${responseJson.animals[i].breeds.primary}, ${responseJson.animals[i].breeds.secondary}</p>
+ <p>Breed: ${responseJson.animals[i].breeds.primary}${secondaryBreed}</p>
  <p>Age: ${responseJson.animals[i].age}</p>
  <p>Location: ${responseJson.animals[i].contact.address.city}</p>
  <p>Status: ${responseJson.animals[i].status}</p>
- <p>Email: ${responseJson.animals[i].contact.email}</p>
+ <p>Email: ${contact}</p>
  <a href="${responseJson.animals[i].url} target='_blank'>Find out more</a>`)
     };
   }
