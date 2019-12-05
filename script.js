@@ -5,8 +5,8 @@ const searchURL = 'https://api.petfinder.com/v2/animals/';
 const accessURL = 'https://api.petfinder.com/v2/oauth2/token';
 let expires = ' ';
 let breed = ' ';
-let wikiURL = 'https://en.wikipedia.org/w/api.php/';
-var queryURL = "https://cors-anywhere.herokuapp.com/";
+const youtubeURL = 'https://www.googleapis.com/youtube/v3/search';
+const youTubeApiKey = 'AIzaSyAe-xtCZIobgp2U2wbPVj9SuGEwW5Amtug';
 
 
 function formatQueryParams(params) {
@@ -35,32 +35,41 @@ function displayResults(responseJson) {
   }
 }
 
-function displayWiki(responseJsonWiki){
-console.log(responseJsonWiki);
-}
+function displayWiki(responseJsonTube) {
+  console.log(responseJsonTube);
+  $('#video-results-list').empty();
+  //for (let i = 0; i < responseJsonTube.items.length; i++){
+    //console.log(i);
+    $('#video-results-list').append(`
+      <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
+      <p>${responseJsonTube.items[0].snippet.description}</p>
+      <img src='${responseJsonTube.items[0].snippet.thumbnails.default.url}'>
+      </li>`)
+    };
 
-function getWiki(breed) {
+
+
+
+function getWiki(type) {
   const params = {
-    action:'opensearch',
-    format:'json',
-    search: breed
+    key: youTubeApiKey,
+    part: 'snippet',
+    q: type + ' training',
+    type: 'video',
+    videoEmbeddable: 'true'
   };
   console.log(params);
   const queryString = formatQueryParams(params)
-  const url = queryURL + wikiURL + '?' + queryString;
+  const url = youtubeURL + '?' + queryString;
   console.log(url);
-  fetch(url, {
-    headers: {
-      "x-requested-with": "xhr" 
-    },
-  })
+  fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
       }
       throw new Error(response.statusText);
     })
-    .then(responseJsonWiki =>displayWiki(responseJsonWiki))
+    .then(responseJsonTube => displayWiki(responseJsonTube))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
@@ -103,7 +112,7 @@ function watchForm() {
     console.log(type);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
-    getWiki(breed);
+    getWiki(type);
   })
 }
 
