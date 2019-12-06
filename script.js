@@ -48,7 +48,8 @@ function displayWiki(responseJsonTube) {
     $('#video-results-list').append(`
       <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
       <p>${responseJsonTube.items[0].snippet.description}</p>
-      <img src='${responseJsonTube.items[0].snippet.thumbnails.default.url}'>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/${items[0].id.videoId}" frameborder="0" 
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </li>`)
     };
 
