@@ -40,7 +40,7 @@ function displayResults(responseJson) {
   }
 }
 
-function displayWiki(responseJsonTube) {
+function displayTube(responseJsonTube) {
   console.log(responseJsonTube);
   $('#video-results-list').empty();
   //for (let i = 0; i < responseJsonTube.items.length; i++){
@@ -56,11 +56,11 @@ function displayWiki(responseJsonTube) {
 
 
 
-function getWiki(type) {
+function getTube(breed) {
   const params = {
     key: youTubeApiKey,
     part: 'snippet',
-    q: type + ' training',
+    q: breed + '  training',
     type: 'video',
     videoEmbeddable: 'true'
   };
@@ -75,7 +75,7 @@ function getWiki(type) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJsonTube => displayWiki(responseJsonTube))
+    .then(responseJsonTube => displayTube(responseJsonTube))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
@@ -118,7 +118,7 @@ function watchForm() {
     console.log(type);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
-    getWiki(type);
+    getTube(breed);
   })
 }
 
