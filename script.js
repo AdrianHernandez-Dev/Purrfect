@@ -42,9 +42,7 @@ function displayResults(responseJson) {
 
 function displayTube(responseJsonTube) {
   console.log(responseJsonTube);
-  $('#video-results-list').empty();
-  //for (let i = 0; i < responseJsonTube.items.length; i++){
-    //console.log(i);
+    $('#video-results-list').empty();
     $('#video-results-list').append(`
       <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
       <p>${responseJsonTube.items[0].snippet.description}</p>
@@ -77,7 +75,7 @@ function getTube(breed) {
     })
     .then(responseJsonTube => displayTube(responseJsonTube))
     .catch(err => {
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      $('#js-error-message').text(`No training available for this breed`);
     });
 }
 
@@ -104,7 +102,7 @@ function getAnimal(location, type, breed) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      $('#results-list').text(`No adoptable pets available for this breed, Please try another breed`);
     });
 }
 
@@ -114,7 +112,7 @@ function watchForm() {
     console.log('checked');
     const location = $('#js-search-term').val();
     console.log(location);
-    const type = $('#js-search-type').val();
+    const type = $('#type-select').val();
     console.log(type);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);

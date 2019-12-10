@@ -14,17 +14,24 @@
 
     <form id="js-form">
       <label for="search-term">Search Postal Code:</label>
-      <input type="text" name="search-term" id="js-search-term" required><br
-      <label for="search-type">Pet Type:</label>
-      <input type="text" name="search-type" id="js-search-type" required><br
+      <input type="text" name="search-term" id="js-search-term" required><br>
+      <label for="search-type">Search an animal type:</label>
+      <select id="type-select">
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Horse">Horse</option>
+        <option value="Turtle">Turtle</option>
+        <option value="Bird">Bird</option>
+        <option value="Goat">Goat</option>
+      </select> <br>
       <label for="search-type">Breed:</label>
       <input type="text" name="search-breed" id="js-search-breed" required>
       <input type="submit" value="Go!">
     </form>
     <section id="video-results" class="hidden">
-        <ul id="video-results-list">
-        </ul>
-      </section>
+      <ul id="video-results-list">
+      </ul>
+    </section>
     <section id="results" class="hidden">
       <ul id="results-list">
         <p id="js-error-message" class="error-message"></p>
