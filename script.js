@@ -24,7 +24,7 @@ function displayResults(responseJson) {
   else {
     for (let i = 0; i < responseJson.animals.length; i++) {
       let secondaryBreed = '';
-      if (responseJson.animals[i].breeds.secondary){
+      if (responseJson.animals[i].breeds.secondary) {
         secondaryBreed = ', ' + responseJson.animals[i].breeds.secondary;
       }
       let contact = responseJson.animals[i].contact.email || '';
@@ -35,21 +35,21 @@ function displayResults(responseJson) {
  <p>Location: ${responseJson.animals[i].contact.address.city}</p>
  <p>Status: ${responseJson.animals[i].status}</p>
  <p>Email: ${contact}</p>
- <a href="${responseJson.animals[i].url} target='_blank'">Find out more</a>`)
+ <a href="${responseJson.animals[i].url}" target="_blank">Find out more</a>`)
     };
   }
 }
 
 function displayTube(responseJsonTube) {
   console.log(responseJsonTube);
-    $('#video-results-list').empty();
-    $('#video-results-list').append(`
+  $('#video-results-list').empty();
+  $('#video-results-list').append(`
       <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
       <p>${responseJsonTube.items[0].snippet.description}</p>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/${responseJsonTube.items[0].id.videoId}" frameborder="0" 
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </li>`)
-    };
+};
 
 
 
