@@ -84,7 +84,7 @@ function getTube(type) {
 function getAnimal(location, type, breed) {
   const params = {
     location: location,
-    animal: type,
+    type: type,
     breed: breed,
     limit: 100,
     status: 'adoptable'
