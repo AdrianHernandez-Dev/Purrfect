@@ -56,12 +56,12 @@ function displayTube(responseJsonTube) {
 
 
 
-function getTube(type2) {
-  console.log(type2);
+function getTube(type) {
+  console.log(type);
   const params = {
     key: youTubeApiKey,
     part: 'snippet',
-    q: type2 + '  training',
+    q: type + '  training',
     type: 'video',
     videoEmbeddable: 'true'
   };
@@ -117,13 +117,11 @@ function watchForm() {
     console.log('checked');
     const location = $('#js-search-term').val();
     console.log(location);
-    const type = $('#type-select').val();
-    const type2 = $('#type-select').text();
+    const type = $('#type-select').val(text);
     console.log(type);
-    console.log(type2);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
-    getTube(type2);
+    getTube(type);
   })
 }
 
