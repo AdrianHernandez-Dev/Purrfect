@@ -23,6 +23,7 @@ function displayResults(responseJson) {
   }
   else {
     for (let i = 0; i < responseJson.animals.length; i++) {
+      console.log(responseJson.animals[i].photos.small);
       let secondaryBreed = '';
       if (responseJson.animals[i].breeds.secondary) {
         secondaryBreed = ', ' + responseJson.animals[i].breeds.secondary;
@@ -54,11 +55,11 @@ function displayTube(responseJsonTube) {
 
 
 
-function getTube(breed) {
+function getTube(type) {
   const params = {
     key: youTubeApiKey,
     part: 'snippet',
-    q: breed + '  training',
+    q: type + '  training',
     type: 'video',
     videoEmbeddable: 'true'
   };
@@ -82,7 +83,7 @@ function getTube(breed) {
 function getAnimal(location, type, breed) {
   const params = {
     location: location,
-    type: type,
+    animal: type,
     breed: breed
   };
   console.log(params);
@@ -116,7 +117,7 @@ function watchForm() {
     console.log(type);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
-    getTube(breed);
+    getTube(type);
   })
 }
 
