@@ -86,7 +86,8 @@ function getAnimal(location, type, breed) {
     location: location,
     animal: type,
     breed: breed,
-    limit: 100
+    limit: 100,
+    status: 'adoptable'
   };
   console.log(params);
   const queryString = formatQueryParams(params)
