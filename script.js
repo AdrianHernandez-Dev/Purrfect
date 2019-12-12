@@ -84,7 +84,8 @@ function getAnimal(location, type, breed) {
   const params = {
     location: location,
     animal: type,
-    breed: breed
+    breed: breed,
+    limit: 100
   };
   console.log(params);
   const queryString = formatQueryParams(params)
