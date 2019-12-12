@@ -57,6 +57,7 @@ function displayTube(responseJsonTube) {
 
 
 function getTube(type2) {
+  console.log(type2);
   const params = {
     key: youTubeApiKey,
     part: 'snippet',
