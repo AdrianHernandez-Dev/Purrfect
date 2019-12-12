@@ -119,6 +119,7 @@ function watchForm() {
     const type = $('#type-select').val();
     const type2 = $('#type-select').text();
     console.log(type);
+    console.log(type2);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
     getTube(type2);
