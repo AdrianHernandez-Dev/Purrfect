@@ -103,7 +103,7 @@ function getAnimal(location, type, breed) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $('#results-list').text(`No adoptable pets available for this breed, Please try another breed`);
+      $('#results-list').text(`No adoptable pets available for this breed, Please try another breed or search a different zip code`);
     });
 }
 
