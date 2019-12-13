@@ -117,7 +117,7 @@ function watchForm() {
     console.log('checked');
     const location = $('#js-search-term').val();
     console.log(location);
-    const type = $('#type-select').val(text);
+    const type = $('#type-select').val();
     console.log(type);
     const breed = $('#js-search-breed').val();
     getAnimal(location, type, breed);
