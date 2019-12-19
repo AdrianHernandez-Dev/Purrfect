@@ -1,6 +1,5 @@
 body {
   font-size: 15px;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,4 +31,12 @@ input#js-search-term, input#js-search-breed, select#type-select, input{
 
 input {
   margin-top: 5px;
+}
+
+ul#results-list, ul#video-results-list {
+  padding-left: 0;
+}
+
+h3 {
+  font-size: 13px;
 }
