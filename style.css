@@ -4,9 +4,6 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-html {
   height: 100%;
 }
 
@@ -17,7 +14,7 @@ li {
 .container {
   color: black;
   width: 250px;
-  padding-left: 100px;
+  
 }
 
 #js-form {

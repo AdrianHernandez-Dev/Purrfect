@@ -47,7 +47,7 @@ function displayTube(responseJsonTube) {
   $('#video-results-list').empty();
   $('#video-results-list').append(`
       <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
-      <iframe width="100" height="100" src="https://www.youtube.com/embed/${responseJsonTube.items[0].id.videoId}" frameborder="0" 
+      <iframe width="150" height="150" src="https://www.youtube.com/embed/${responseJsonTube.items[0].id.videoId}" frameborder="0" 
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </li>`)
 };
