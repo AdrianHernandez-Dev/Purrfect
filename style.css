@@ -5,6 +5,8 @@ body {
   justify-content: center;
   box-sizing: border-box;
   height: 100%;
+  margin-top: 50%;
+  background-color: yellow;
 }
 
 li {
@@ -19,18 +21,16 @@ li {
 
 #js-form {
   font-size: 10px;
-  display: grid;
 }
 
 input#js-search-term, input#js-search-breed, select#type-select, input{
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5px;
+  padding: 0;
 }
 
-input {
-  margin-top: 5px;
-}
 
 ul#results-list, ul#video-results-list {
   padding-left: 0;
@@ -45,6 +45,7 @@ li {
   padding-left: 5px;
   margin-top: 5px;
   text-align: center;
+  background-color: blue;
 }
 
 a {
