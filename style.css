@@ -1,4 +1,35 @@
+body {
+  font-size: 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 li {
   list-style: none;
 }
 
+.container {
+  color: black;
+  width: 250px;
+  padding-left: 100px;
+}
+
+#js-form {
+  font-size: 10px;
+  display: grid;
+}
+
+input#js-search-term, input#js-search-breed, select#type-select, input{
+  width: 50%;
+}
+
+input {
+  margin-top: 5px;
+}

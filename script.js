@@ -30,8 +30,8 @@ function displayResults(responseJson) {
       }
       let contact = responseJson.animals[i].contact.email || '';
       $('#results-list').append(`
-  <li> <h3>${responseJson.animals[i].name}</h3>
-  <img src="${responseJson.animals[i].photos[0].small}"/>
+ <li> <h3>${responseJson.animals[i].name}</h3>
+ <img src="${responseJson.animals[i].photos[0].small}"/>
  <p>Breed: ${responseJson.animals[i].breeds.primary}${secondaryBreed}</p>
  <p>Age: ${responseJson.animals[i].age}</p>
  <p>Location: ${responseJson.animals[i].contact.address.city}</p>
@@ -57,7 +57,6 @@ function displayTube(responseJsonTube) {
 
 
 function getTube(type) {
-  console.log(type);
   const params = {
     key: youTubeApiKey,
     part: 'snippet',
