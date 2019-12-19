@@ -1,12 +1,13 @@
 body {
   font-size: 15px;
+  color: #B37959;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   height: 100%;
   margin-top: 50%;
-  background-color:#6BB3B0;
+  background-color:#B2FFFC;
 }
 
 li {
@@ -40,11 +41,11 @@ h3 {
 }
 
 li {
-  border: 5px solid #B37959;
+  border: 5px solid #FFCDB3;
   padding-left: 5px;
   margin-top: 5px;
   text-align: center;
-  background-color: #B2FFFC;
+  background-color: #CCFFFD;
 }
 
 a {
