@@ -24,13 +24,12 @@ li {
 }
 
 input#js-search-term, input#js-search-breed, select#type-select, input{
-  width: 50%;
+  width: 25%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
   padding: 0;
 }
-
 
 ul#results-list, ul#video-results-list {
   padding-left: 0;
