@@ -118,8 +118,15 @@ function watchForm() {
     const type = $('#type-select').val();
     console.log(type);
     const breed = $('#js-search-breed').val();
+    const barnYardType = $('#type-select option:selected').text();
     getAnimal(location, type, breed);
-    getTube(type);
+    if (type === 'scales-fins-others'){
+      getTube('turtle');
+    } else if (type === 'barnyard'){
+      getTube(barnYardType);
+    } else {
+      getTube(type);
+    }
   })
 }
 
