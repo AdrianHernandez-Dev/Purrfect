@@ -10,6 +10,11 @@ body {
   margin-top: 50%;
   background-color:#B2FFFC;
 }
+
+h2{
+ font-size: 12px;
+}
+
 #go {
 cursor: pointer;
 }
@@ -25,6 +30,7 @@ cursor: pointer;
   width: 150px;
   float: right;
 }
+
 .card {
   height: 100%;
   position: absolute;
@@ -32,15 +38,18 @@ cursor: pointer;
   transition: all 1s ease-in-out;
   width: 100%;
 }
+
 .card:hover {
   transform: rotateY(180deg);
 }
+
 .card .side {
   backface-visibility: hidden;
   height: 100%;
   position: absolute;
   width: 100%;
 }
+
 .card .back {
   transform: rotateY(180deg);
 }
@@ -65,6 +74,7 @@ input#js-search-term, input#js-search-breed, select#type-select, input{
   margin-right: auto;
   margin-top: 5px;
   padding: 0;
+  background: #CCFFFD;
 }
 
 ul#results-list, ul#video-results-list {
@@ -77,6 +87,7 @@ h3 {
 
 h1 {
   font-family: 'Yeseva One', cursive;
+  margin-bottom: 15px;
 }
 
 li {
@@ -98,7 +109,7 @@ p{
     margin-top: 25%;
   }
 
-  p,h3 {
+  p,h3,h2 {
     font-size: 20px;
   }
 

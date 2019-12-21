@@ -16,14 +16,12 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   $('#results-list').empty();
   if (responseJson.animals.length === 0) {
     $('#results-list').append(`<h2>No results found! Please try again</h2>`);
   }
   else {
     for (let i = 0; i < responseJson.animals.length; i++) {
-      console.log(responseJson.animals[i].photos.small);
       let secondaryBreed = '';
       if (responseJson.animals[i].breeds.secondary) {
         secondaryBreed = ', ' + responseJson.animals[i].breeds.secondary;
@@ -47,7 +45,6 @@ function displayResults(responseJson) {
 }
 
 function displayTube(responseJsonTube) {
-  console.log(responseJsonTube);
   $('#video-results-list').empty();
   $('#video-results-list').append(`
       <li><h3>${responseJsonTube.items[0].snippet.title}</h3>
@@ -67,10 +64,8 @@ function getTube(type) {
     type: 'video',
     videoEmbeddable: 'true'
   };
-  console.log(params);
   const queryString = formatQueryParams(params)
   const url = youtubeURL + '?' + queryString;
-  console.log(url);
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -92,10 +87,8 @@ function getAnimal(location, type, breed) {
     limit: 100,
     status: 'adoptable'
   };
-  console.log(params);
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
-  console.log(url);
   fetch(url, {
     headers: {
       'Authorization': 'Bearer ' + access_token
@@ -116,17 +109,14 @@ function getAnimal(location, type, breed) {
 function watchForm() {
   $('form').submit(function (event) {
     event.preventDefault();
-    console.log('checked');
     const location = $('#js-search-term').val();
-    console.log(location);
     const type = $('#type-select').val();
-    console.log(type);
     const breed = $('#js-search-breed').val();
     const barnYardType = $('#type-select option:selected').text();
     getAnimal(location, type, breed);
-    if (type === 'scales-fins-others'){
+    if (type === 'scales-fins-others') {
       getTube('turtle');
-    } else if (type === 'barnyard'){
+    } else if (type === 'barnyard') {
       getTube(barnYardType);
     } else {
       getTube(type);
@@ -144,11 +134,8 @@ let auth = function () {
   })
     .then(res => res.json())
     .then(function (json) {
-      console.log(json);
       access_token = json.access_token;
-      console.log(access_token);
       expires = json.expires_in;
-      console.log(expires);
     });
 }
 
