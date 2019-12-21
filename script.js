@@ -31,13 +31,17 @@ function displayResults(responseJson) {
       let contact = responseJson.animals[i].contact.email || '';
       $('#results-list').append(`
  <li> <h3>${responseJson.animals[i].name}</h3>
- <img src="${responseJson.animals[i].photos[0].small}"/>
+  <div class="card-container">
+    <div class="card">
+      <div class="side"><img src="${responseJson.animals[i].photos[0].small}"/></div>
+      <div class="side back"><a href="${responseJson.animals[i].url}" target="_blank">Find out more</a></div>
+    </div>
+  </div>
  <p>Breed: ${responseJson.animals[i].breeds.primary}${secondaryBreed}</p>
  <p>Age: ${responseJson.animals[i].age}</p>
  <p>Location: ${responseJson.animals[i].contact.address.city}</p>
  <p>Status: ${responseJson.animals[i].status}</p>
- <p>Email: ${contact}</p>
- <a href="${responseJson.animals[i].url}" target="_blank">Find out more</a>`)
+ <p>Email: ${contact}</p>`)
     };
   }
 }
