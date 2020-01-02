@@ -75,7 +75,6 @@ function getTube(type) {
     })
     .then(responseJsonTube => displayTube(responseJsonTube))
     .catch(err => {
-      console.log(err);
       $('#js-error-message').text(`No training available for this breed`);
     });
 }
