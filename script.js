@@ -16,6 +16,7 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
+  console.log(responseJson);
   $('#results-list').empty();
   if (responseJson.animals.length === 0) {
     $('#results-list').append(`<h2>No results found! Please try again</h2>`);
