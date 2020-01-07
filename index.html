@@ -15,9 +15,9 @@
     <h1>Purrfect Pet Finder</h1>
     <h2>The Purrfect way to search for adoptable pets</h2>
     <form id="js-form">
-      <label for="js-search-term">Search Postal Code:</label>
+      <label for="search-term">Search Postal Code:</label>
       <input type="number" name="search-term" id="js-search-term" required><br>
-      <label for="type-select">Search an animal type:</label>
+      <label for="search-type">Search an animal type:</label>
       <select id="type-select">
         <option value="dog">Dog</option>
         <option value="cat">Cat</option>
@@ -28,8 +28,8 @@
         <option value="barnyard" data-value="alpaca">Alpaca</option>
         <option value="small-furry" data-value="mouse">Mouse</option>
       </select> <br>
-      <label for="js-search-breed">Breed:</label>
-      <input type="text" name="search-breed" id="js-search-breed">
+      <label for="search-type">Breed:</label>
+      <input type="text" name="search-breed" id="js-search-breed" required>
       <input id="go" type="submit" value="Go!">
     </form>
     <section id="video-results" class="hidden">
@@ -38,8 +38,8 @@
     </section>
     <section id="results" class="hidden">
       <ul id="results-list">
+        <p id="js-error-message" class="error-message"></p>
       </ul>
-      <p id="js-error-message" class="error-message"></p>
     </section>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

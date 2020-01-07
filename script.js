@@ -16,7 +16,6 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   $('#results-list').empty();
   if (responseJson.animals.length === 0) {
     $('#results-list').append(`<h2>No results found! Please try again</h2>`);
@@ -32,7 +31,7 @@ function displayResults(responseJson) {
  <li> <h3>${responseJson.animals[i].name}</h3>
   <div class="card-container">
     <div class="card">
-      <div class="side"><img src="${responseJson.animals[i].photos[0].small}"/></div>
+      <div class="side"><img src="${responseJson.animals[i].photos[0].small}"width="100" height="125"/></div>
       <div class="side back"><a href="${responseJson.animals[i].url}" target="_blank">Find out more</a></div>
     </div>
   </div>
@@ -97,6 +96,7 @@ function getAnimal(location, type, breed) {
   })
     .then(response => {
       if (response.ok) {
+        console.log(response);
         return response.json();
       }
       throw new Error(response.statusText);
