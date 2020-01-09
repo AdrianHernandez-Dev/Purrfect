@@ -96,7 +96,6 @@ function getAnimal(location, type, breed) {
   })
     .then(response => {
       if (response.ok) {
-        console.log(response);
         return response.json();
       }
       throw new Error(response.statusText);
